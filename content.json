@@ -1,0 +1,66 @@
+{
+  "_nasil_degistirilir": "Bu dosyadaki yazıları değiştir, kaydet. Bot otomatik okur (yeniden başlatma gerekmez). Her satır ayrı satır gösterilir. <b>...</b> = kalın yazı. Emoji ekleyebilirsin.",
+
+  "title": "Uçuş Fırsatları",
+
+  "_marka_notu": "Buraya KENDİ marka adını yaz. Türk Hava Yolları / THY adını veya logosunu, onlardan resmi izin almadıysan kullanma.",
+
+  "_webapp_linki": "Mini App (kart görünümü) için webapp/ klasörünü https:// bir adreste yayınla ve adresi buraya yaz. Boş bırakırsan bot 'Fırsatları Aç' butonunda sohbet içi rota listesini gösterir.",
+  "webapp_url": "https://altaykandermir-art.github.io/flightdeals/index.html",
+
+  "start_caption": [
+    "✈️ <b>Uçuş Fırsatları</b>",
+    "",
+    "Türkiye çıkışlı yurt içi ve yurt dışı uçuşlarda güncel fiyatları tek yerde karşılaştır.",
+    "Başlamak için aşağıdaki butona dokun 👇"
+  ],
+
+  "welcome_caption": [
+    "👋 <b>Hoş geldin!</b>",
+    "",
+    "Aşağıdan güncel rotaları görebilir, fiyatları Enuygun / Skyscanner üzerinde karşılaştırabilirsin.",
+    "",
+    "• ✈️ <b>Fırsatları Aç</b> — kart görünümü",
+    "• 🗺️ <b>Rotalar</b> — popüler uçuşlar",
+    "• ℹ️ <b>Hakkında</b>"
+  ],
+
+  "routes_text": [
+    "🗺️ <b>Popüler Rotalar</b>",
+    "",
+    "Bir rotaya dokun, güncel fiyatlar arama sayfasında açılsın 👇"
+  ],
+
+  "about_text": [
+    "<b>Hakkında</b>",
+    "",
+    "Bu bot, Türkiye çıkışlı uçuşlar için güncel fiyatları halka açık arama siteleri (Enuygun, Skyscanner, havayolları) üzerinde karşılaştırmana yardımcı olur.",
+    "",
+    "Sadece /start ile botu başlatan kullanıcılara mesaj gönderilir. İstediğin an /stop yazarak çıkabilirsin."
+  ],
+
+  "_menu_kelimeleri": "Kullanıcı bu kelimelerden birini yazınca menü tekrar açılır. Türkçe karakter ve büyük/küçük harf farkı önemli değil. İstediğin kadar ekle/çıkar.",
+  "menu_keywords": [
+    "menü", "menu", "başla", "basla", "start",
+    "uçuş", "ucus", "uçuşlar", "ucuslar",
+    "rota", "rotalar", "uçak", "ucak",
+    "fırsat", "firsat", "fırsatlar", "firsatlar",
+    "bilet", "biletler", "uçak bileti"
+  ],
+
+  "_komut_mesajlari": "Aşağıdakiler /help, /stop ve Mini App'ten seçim yapıldığında çıkan mesajlar. picked_text içindeki {item} otomatik olarak seçilen rotanın adıyla değişir.",
+  "help_text": "Menüyü açmak için /start gönder. Çıkmak için /stop.",
+  "stop_text": "Tamam — artık mesaj almayacaksın. Dönmek için /start yaz.",
+  "picked_text": [
+    "✈️ Seçildi: <b>{item}</b>",
+    "Arama sayfasına yönlendiriliyorsun."
+  ],
+
+  "buttons": {
+    "start": "🚀 BAŞLAT",
+    "deals": "✈️ Fırsatları Aç",
+    "routes": "🗺️ Rotalar",
+    "about": "ℹ️ Hakkında",
+    "back": "⬅️ Geri"
+  }
+}
