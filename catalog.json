@@ -1,0 +1,94 @@
+{
+  "title": "Uçuş Fırsatları",
+  "subtitle": "Bir rotaya dokun, fiyatları karşılaştır",
+  "_not": "action_url = halka açık bir arama sayfası olmalı (Enuygun, Skyscanner, THY, Pegasus...). Fiyatlar tahminîdir; gerçek fiyat arama sayfasında görünür. image: kendi görselin ya da boş bırak.",
+
+  "_texts_not": "Mini App ekranındaki sabit yazılar. Buradan değiştir, kaydet.",
+  "texts": {
+    "loading": "Yükleniyor…",
+    "note": "Fiyatlar tahminîdir; kesin fiyat arama sayfasında görünür.",
+    "open_button_default": "Aç",
+    "load_error": "catalog.json yüklenemedi: "
+  },
+
+  "categories": [
+    {
+      "id": "domestic",
+      "name": "Yurt İçi",
+      "items": [
+        {
+          "id": "ist-ayt",
+          "name": "İstanbul → Antalya",
+          "description": "Tek yön · tahminî",
+          "price": "899",
+          "currency": "TL",
+          "image": "",
+          "action_text": "Fiyatları Gör",
+          "action_url": "https://www.enuygun.com/ucak-bileti/istanbul-antalya/"
+        },
+        {
+          "id": "ist-izm",
+          "name": "İstanbul → İzmir",
+          "description": "Tek yön · tahminî",
+          "price": "1150",
+          "currency": "TL",
+          "image": "",
+          "action_text": "Fiyatları Gör",
+          "action_url": "https://www.enuygun.com/ucak-bileti/istanbul-izmir/"
+        }
+      ]
+    },
+    {
+      "id": "europe",
+      "name": "Avrupa",
+      "items": [
+        {
+          "id": "ist-ber",
+          "name": "İstanbul → Berlin",
+          "description": "Gidiş-dönüş · tahminî",
+          "price": "4200",
+          "currency": "TL",
+          "image": "",
+          "action_text": "Fiyatları Gör",
+          "action_url": "https://www.enuygun.com/ucak-bileti/istanbul-berlin/"
+        },
+        {
+          "id": "ist-cdg",
+          "name": "İstanbul → Paris",
+          "description": "Gidiş-dönüş · tahminî",
+          "price": "5600",
+          "currency": "TL",
+          "image": "",
+          "action_text": "Fiyatları Gör",
+          "action_url": "https://www.enuygun.com/ucak-bileti/istanbul-paris/"
+        }
+      ]
+    },
+    {
+      "id": "international",
+      "name": "Yurt Dışı",
+      "items": [
+        {
+          "id": "ist-dxb",
+          "name": "İstanbul → Dubai",
+          "description": "Gidiş-dönüş · tahminî",
+          "price": "7900",
+          "currency": "TL",
+          "image": "",
+          "action_text": "Fiyatları Gör",
+          "action_url": "https://www.enuygun.com/ucak-bileti/istanbul-dubai/"
+        },
+        {
+          "id": "ist-jfk",
+          "name": "İstanbul → New York",
+          "description": "Gidiş-dönüş · tahminî",
+          "price": "18500",
+          "currency": "TL",
+          "image": "",
+          "action_text": "Fiyatları Gör",
+          "action_url": "https://www.skyscanner.com.tr/transport/flights/ista/nyca/"
+        }
+      ]
+    }
+  ]
+}

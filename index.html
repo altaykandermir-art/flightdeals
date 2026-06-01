@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Uçuş Fırsatları</title>
+  <!-- Official Telegram Mini App SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    :root {
+      --bg: var(--tg-theme-bg-color, #0f1115);
+      --card: var(--tg-theme-secondary-bg-color, #1b1f27);
+      --text: var(--tg-theme-text-color, #ffffff);
+      --hint: var(--tg-theme-hint-color, #8a93a2);
+      --accent: var(--tg-theme-button-color, #2ea6ff);
+      --accent-text: var(--tg-theme-button-text-color, #ffffff);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
+      padding: 16px; padding-bottom: 32px;
+    }
+    header { margin-bottom: 16px; }
+    h1 { font-size: 20px; margin: 0 0 4px; }
+    .sub { color: var(--hint); font-size: 14px; }
+    .cat { margin: 20px 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: var(--hint); }
+    .card {
+      background: var(--card); border-radius: 14px; padding: 14px;
+      margin-bottom: 10px; display: flex; gap: 12px; align-items: center;
+    }
+    .thumb {
+      width: 56px; height: 56px; border-radius: 10px; flex: 0 0 auto;
+      background: linear-gradient(135deg, #2ea6ff33, #2ea6ff11);
+      display: flex; align-items: center; justify-content: center; font-size: 24px;
+      object-fit: cover;
+    }
+    .info { flex: 1; min-width: 0; }
+    .name { font-weight: 600; font-size: 15px; }
+    .desc { color: var(--hint); font-size: 13px; margin-top: 2px; }
+    .price { font-weight: 700; font-size: 15px; white-space: nowrap; }
+    .go {
+      border: none; background: var(--accent); color: var(--accent-text);
+      border-radius: 10px; padding: 9px 14px; font-weight: 600; font-size: 14px;
+      cursor: pointer; white-space: nowrap;
+    }
+    .row-actions { display: flex; gap: 8px; align-items: center; }
+    .err { color: #ff6b6b; font-size: 14px; }
+    .note { color: var(--hint); font-size: 12px; margin-top: 18px; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title">&nbsp;</h1>
+    <div class="sub" id="subtitle"></div>
+  </header>
+
+  <main id="list"></main>
+  <div class="note" id="note"></div>
+
+  <script>
+    const tg = window.Telegram ? window.Telegram.WebApp : null;
+    if (tg) { tg.ready(); tg.expand(); }
+
+    // Shown before catalog.json loads (can't read its texts yet).
+    document.getElementById("subtitle").textContent = "Yükleniyor…";
+
+    function esc(s) {
+      return String(s == null ? "" : s).replace(/[&<>"']/g, c => (
+        { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]
+      ));
+    }
+
+    function openDeal(item) {
+      // Tell the bot what was picked (optional analytics), then open the real search page.
+      if (tg && tg.sendData) {
+        try { tg.sendData(JSON.stringify({ id: item.id, name: item.name })); } catch (e) {}
+      }
+      const url = item.action_url || "";
+      if (/^https:\/\//.test(url)) {
+        if (tg && tg.openLink) tg.openLink(url, { try_instant_view: false });
+        else window.open(url, "_blank", "noopener");
+      }
+    }
+
+    function render(data) {
+      const t = data.texts || {};
+      document.getElementById("title").textContent = data.title || "Uçuş Fırsatları";
+      document.getElementById("subtitle").textContent = data.subtitle || "";
+      document.getElementById("note").textContent = t.note || "";
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+
+      (data.categories || []).forEach(cat => {
+        const h = document.createElement("div");
+        h.className = "cat";
+        h.textContent = cat.name || "";
+        list.appendChild(h);
+
+        (cat.items || []).forEach(item => {
+          const card = document.createElement("div");
+          card.className = "card";
+
+          const thumb = document.createElement(item.image ? "img" : "div");
+          thumb.className = "thumb";
+          if (item.image) { thumb.src = item.image; thumb.alt = ""; }
+          else { thumb.textContent = "✈️"; }
+
+          const info = document.createElement("div");
+          info.className = "info";
+          info.innerHTML =
+            '<div class="name">' + esc(item.name) + "</div>" +
+            '<div class="desc">' + esc(item.description) + "</div>";
+
+          const actions = document.createElement("div");
+          actions.className = "row-actions";
+          const price = document.createElement("span");
+          price.className = "price";
+          price.textContent = (item.price || "") + (item.currency || "");
+          const btn = document.createElement("button");
+          btn.className = "go";
+          btn.textContent = item.action_text || t.open_button_default || "Aç";
+          btn.addEventListener("click", () => openDeal(item));
+          actions.appendChild(price);
+          actions.appendChild(btn);
+
+          card.appendChild(thumb);
+          card.appendChild(info);
+          card.appendChild(actions);
+          list.appendChild(card);
+        });
+      });
+    }
+
+    // Load catalog.json sitting next to this file.
+    fetch("catalog.json", { cache: "no-store" })
+      .then(r => r.json())
+      .then(render)
+      .catch(err => {
+        document.getElementById("subtitle").innerHTML =
+          '<span class="err">catalog.json yüklenemedi: ' + esc(err.message) + "</span>";
+        document.getElementById("note").textContent = "";
+      });
+  </script>
+</body>
+</html>
