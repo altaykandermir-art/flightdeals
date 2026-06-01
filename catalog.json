@@ -24,7 +24,7 @@
           "currency": "TL",
           "image": "",
           "action_text": "Fiyatları Gör",
-          "action_url": "https://www.enuygun.com/ucak-bileti/istanbul-antalya/"
+          "action_url": "https://www.skyscanner.com.tr/transport/flights/ista/ayt/"
         },
         {
           "id": "ist-izm",
@@ -34,7 +34,7 @@
           "currency": "TL",
           "image": "",
           "action_text": "Fiyatları Gör",
-          "action_url": "https://www.enuygun.com/ucak-bileti/istanbul-izmir/"
+          "action_url": "https://www.skyscanner.com.tr/transport/flights/ista/izm/"
         }
       ]
     },
@@ -50,7 +50,7 @@
           "currency": "TL",
           "image": "",
           "action_text": "Fiyatları Gör",
-          "action_url": "https://www.enuygun.com/ucak-bileti/istanbul-berlin/"
+          "action_url": "https://www.skyscanner.com.tr/transport/flights/ista/ber/"
         },
         {
           "id": "ist-cdg",
@@ -60,7 +60,7 @@
           "currency": "TL",
           "image": "",
           "action_text": "Fiyatları Gör",
-          "action_url": "https://www.enuygun.com/ucak-bileti/istanbul-paris/"
+          "action_url": "https://www.skyscanner.com.tr/transport/flights/ista/pari/"
         }
       ]
     },
@@ -76,7 +76,7 @@
           "currency": "TL",
           "image": "",
           "action_text": "Fiyatları Gör",
-          "action_url": "https://www.enuygun.com/ucak-bileti/istanbul-dubai/"
+          "action_url": "https://www.skyscanner.com.tr/transport/flights/ista/dxba/"
         },
         {
           "id": "ist-jfk",
